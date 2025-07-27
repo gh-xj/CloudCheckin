@@ -1,35 +1,35 @@
 version: 2.1
 
 jobs:
-  # nodeseek:
-  #   docker:
-  #     - image: cimg/python:3.11
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Install dependencies
-  #         command: |
-  #           python -m pip install --upgrade pip
-  #           pip install curl_cffi
-  #     - run:
-  #         name: Run Nodeseek signin
-  #         command: |
-  #           python -m nodeseek.nodeseek
+  nodeseek:
+    docker:
+      - image: cimg/python:3.11
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            python -m pip install --upgrade pip
+            pip install curl_cffi
+      - run:
+          name: Run Nodeseek signin
+          command: |
+            python -m nodeseek.nodeseek
 
-  # v2ex:
-  #   docker:
-  #     - image: cimg/python:3.11
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Install dependencies
-  #         command: |
-  #           python -m pip install --upgrade pip
-  #           pip install curl_cffi
-  #     - run:
-  #         name: Run V2EX signin
-  #         command: |
-  #           python -m v2ex.v2ex
+  v2ex:
+    docker:
+      - image: cimg/python:3.11
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            python -m pip install --upgrade pip
+            pip install curl_cffi
+      - run:
+          name: Run V2EX signin
+          command: |
+            python -m v2ex.v2ex
 
   onepoint3acres:
     docker:
@@ -47,7 +47,6 @@ jobs:
             python -m onepoint3acres.onepoint3acres
 
 workflows:
-  # Allow manual triggers
   manual_trigger:
     jobs:
       - nodeseek:
